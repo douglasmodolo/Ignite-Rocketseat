@@ -12,9 +12,20 @@ export function Comment({ content, onDeleteComment}) {
         onDeleteComment(content);
     }
 
-    // function handleLikeComment() {        
-    //     setLikeCount(likeCount + 1);
-    // }
+    function handleLikeComment() {        
+        setLikeCount(likeCount + 1);
+
+        /*
+         Sempre que for preciso atualizar uma informação
+         e essa informação depender do valor anterior,
+         o correto é fazer a atualização utilizando esse padrão abaixo:
+        
+                        setLikeCount((state) => {
+                            return state + 1
+                        });
+        
+         */
+    }
 
     return (
         <div className={styles.comment}>
@@ -37,7 +48,7 @@ export function Comment({ content, onDeleteComment}) {
                 </div>
 
                 <footer>
-                    <button onClick={() => setLikeCount(likeCount + 1)}>
+                    <button onClick={handleLikeComment}>
                         <ThumbsUp />
                         Aplaudir <span>{likeCount}</span>
                     </button>
